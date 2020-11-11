@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root to: 'works#homepage'
+
   get 'votes/index'
   get 'votes/show'
   get 'votes/new'
