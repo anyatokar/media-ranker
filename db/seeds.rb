@@ -1,6 +1,6 @@
 require 'csv'
 
-WORK_FILE = Rails.root.join('db', 'seed_data', 'works-seeds.csv')
+WORK_FILE = Rails.root.join('db', 'works_seeds.csv')
 puts "Loading raw work data from #{WORK_FILE}"
 
 work_failures = []
@@ -9,7 +9,7 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   work.category = row['category']
   work.title = row['title']
   work.creator = row['creator']
-  work.publication_year = row['publication_year']
+  work.publication_year = Date.strptime(row['publication_year'], '%Y')
   work.description = row['description']
   successful = work.save
   if !successful
@@ -25,14 +25,15 @@ puts "#{work_failures.length} works failed to save"
 
 
 
-USER_FILE = Rails.root.join('db', 'seed_data', 'users.csv')
+USER_FILE = Rails.root.join('db', 'users_seeds.csv')
 puts "Loading raw user data from #{USER_FILE}"
 
 user_failures = []
 CSV.foreach(USER_FILE, :headers => true) do |row|
   user = User.new
   user.name = row['name']
-  user.date_joined = row['date_joined']
+  # user.date_joined = row['date_joined']
+  user.date_joined = Date.strptime(row['date_joined'], '%Y')
   successful = user.save
   if !successful
     user_failures << user
@@ -47,15 +48,15 @@ puts "#{user_failures.length} users failed to save"
 
 
 
-VOTE_FILE = Rails.root.join('db', 'seed_data', 'votes.csv')
+VOTE_FILE = Rails.root.join('db', 'votes_seeds.csv')
 puts "Loading raw vote data from #{VOTE_FILE}"
 
 vote_failures = []
 CSV.foreach(VOTE_FILE, :headers => true) do |row|
   vote = Vote.new
-  vote.work_id = row['work_id']
   vote.user_id = row['user_id']
-  vote.voted_on = Date.strptime(row['date'], '%Y-%m-%d')
+  vote.work_id = row['work_id']
+  vote.voted_on = Date.strptime(row['voted_on'], '%Y')
   successful = vote.save
   if !successful
     vote_failures << vote

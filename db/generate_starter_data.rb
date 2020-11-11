@@ -34,12 +34,12 @@ CSV.open("db/users_seeds.csv", "w", :write_headers => true,
 end
 
 CSV.open("db/votes_seeds.csv", "w", :write_headers => true,
-         :headers => ["user_id", "work_id", "date voted"]) do |csv|
+         :headers => ["user_id", "work_id", "voted_on"]) do |csv|
   40.times do
     user_id = rand(1..25)
     work_id = rand(1..25)
-    date_voted = rand((Date.today - 49)..(Date.today))
+    voted_on = rand((Date.today - 49)..(Date.today))
 
-    csv << [user_id, work_id, date_voted]
+    csv << [user_id, work_id, voted_on]
   end
 end
