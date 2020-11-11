@@ -1,12 +1,20 @@
 class Work < ApplicationRecord
-  # def top_ten
-  #   @work.each do |work|
-  #     if work.category == "movies"
-  #
-  #     end
-  #   end
-  # end
 
+  def self.filter_category(category)
+    Work.where(category: category)
+  end
+
+  def self.movies
+    Work.filter_category(:movie)
+  end
+
+  def self.albums
+    Work.filter_category(:album)
+  end
+
+  def self.books
+    Work.filter_category(:book)
+  end
 
 
 

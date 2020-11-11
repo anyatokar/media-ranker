@@ -1,0 +1,24 @@
+<h1><%= category %></h1>
+<% if works.length > 0 %>
+  <table>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+
+    <% works.each do |work| %>
+        <tr>
+          <td><%= 0 %></td>
+          <td><%= work.title %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= button_to "Upvote", :class => "button" %></td>
+        </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No <%= category %>in the system!</p>
+<% end %>
