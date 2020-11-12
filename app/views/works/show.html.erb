@@ -5,10 +5,10 @@
     <p>Published: <%= @work.publication_year %></p>
     <p><%= @work.description %></p>
     <section>
-      <a class="btn-primary" <%= button_to "Edit", edit_work_path(@work), method: :get %></a>
-      <a class="btn-primary" <%= button_to "Back to Media Ranks", root_path %></a>
-<!--      <a class="btn-primary" <%#= button_to "Upvote", work_vote_path(@work), method: :post %></a>-->
-      <a class="btn-primary" <%= button_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%></a>
+      <a class="btn-primary" ><%= button_to "Edit", edit_work_path(@work), method: :get %></a>
+      <a class="btn-primary" ><%= button_to "Back to Media Ranks", root_path %></a>
+<!--      <a class="btn-primary" ><%#= button_to "Upvote", work_vote_path(@work), method: :post %></a>-->
+      <a class="btn-primary" ><%= button_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%></a>
     </section>
   </section>
 <!--  <section class ="works-votes-container">-->

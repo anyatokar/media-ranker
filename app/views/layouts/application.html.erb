@@ -10,6 +10,20 @@
   </head>
 
   <body>
+  <header class="app_header">
+    <h1>
+      <a><%= link_to "Media Ranker", root_path %></a>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+    <nav class="app-header-nav">
+      <ul>
+        <li><%= link_to "View top media", root_path, :class => "nav-link" %></li>
+        <li><%= link_to "View all media", works_path, method: :get, :class => "nav-link" %></li>
+        <li><%= link_to "Add a new work", new_work_path, method: :get, :class => "nav-link" %></li>
+        <li><%= link_to "View all users", users_path, method: :get, :class => "nav-link" %></li>
+      </ul>
+    </nav>
+  </header>
     <%= yield %>
   </body>
 </html>
