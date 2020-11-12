@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+  has_many :votes
+  has_many :users, through: :votes
 
   def self.filter_category(category)
     Work.where(category: category)
