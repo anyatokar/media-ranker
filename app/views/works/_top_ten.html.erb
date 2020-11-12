@@ -1,8 +1,13 @@
-<h2>Top <%= category %></h2>
-<% works.top_ten.each do |work| %>
-  <p>
-    <%= work.title %> by <%= work.creator %><br>
-    <%= work.id %> votes
-<!--    TODO this is id for now!-->
-  </p>
-<% end %>
+<section class="top-ten__list-container">
+  <h2 class="top-ten__header"> Top <%= category %></h2>
+  <% works.top_ten.each do |work| %>
+    <li class="list-group-item">
+      <h4>
+        <%= work.title %>
+        <small class="top_ten__creator"> by <%= work.creator %></small>
+        <!--    TODO this is id for now!-->
+      </h4>
+      <p><%= work.id %> votes</p>
+    </li>
+  <% end %>
+</section>

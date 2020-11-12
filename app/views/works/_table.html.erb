@@ -1,25 +1,27 @@
-<h1><%= category %></h1>
-<% if works.length > 0 %>
-  <table>
-    <tr>
-      <th>Votes</th>
-      <th>Title</th>
-      <th>Created By</th>
-      <th>Published</th>
-      <th>Upvote</th>
-    </tr>
+<section class="media-table">
+  <h4><%= category %></h4>
+  <% if works.length > 0 %>
+    <table class="table">
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
+      </tr>
 
-    <% works.each do |work| %>
-        <tr>
-<!--          id for now-->
-          <td><%= work.id %></td>
-          <td><%= link_to work.title, work_path(work) %></td>
-          <td><%= work.creator %></td>
-          <td><%= work.publication_year %></td>
-          <td><%= button_to "Upvote", :class => "btn btn-primary" %></td>
-        </tr>
-    <% end %>
-  </table>
-<% else %>
-  <p>No <%= category %>in the system!</p>
-<% end %>
+      <% works.each do |work| %>
+          <tr>
+  <!--          id for now-->
+            <td><%= work.id %></td>
+            <td><%= link_to work.title, work_path(work) %></td>
+            <td><%= work.creator %></td>
+            <td><%= work.publication_year %></td>
+            <td><%= button_to "Upvote", :class => "btn btn-primary" %></td>
+          </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>No <%= category %>in the system!</p>
+  <% end %>
+</section>
