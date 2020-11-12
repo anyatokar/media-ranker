@@ -1,3 +1,33 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
-<h2><%= @work.title %></h2>
+<main>
+  <section>
+    <h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p><%= @work.description %></p>
+    <section>
+      <a class="btn-primary" <%= button_to "Edit", edit_work_path(@work), method: :get %></a>
+      <a class="btn-primary" <%= button_to "Back to Media Ranks", root_path %></a>
+<!--      <a class="btn-primary" <%#= button_to "Upvote", work_vote_path(@work), method: :post %></a>-->
+      <a class="btn-primary" <%= button_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%></a>
+    </section>
+  </section>
+<!--  <section class ="works-votes-container">-->
+<!--    <h3 class="works-votes-container"><%#= @work.votes %> Votes for this <%#= @work.category %> </h3>-->
+<!--    <table class="table">-->
+<!--      <thead>-->
+<!--        <tr>-->
+<!--          <th>User</th>-->
+<!--          <th>Date</th>-->
+<!--        </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+        <%# @work.votes.each do |vote| %>
+<!--          <tr>-->
+<!--            <td><%#= vote.user %></td>-->
+<!--            <td><%#= vote.date %></td>-->
+<!--          </tr>-->
+        <%# end %>
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </section>-->
+</main>
