@@ -16,6 +16,16 @@ class Work < ApplicationRecord
     Work.filter_category(:book)
   end
 
+  def self.top_ten
+
+    # id = params[:id]
+    self.first(10)
+
+    # filtered = Work.category
+    # filtered.sort_by(:id)
+
+  end
+
 
 
 end

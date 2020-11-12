@@ -1,0 +1,8 @@
+<h2>Top <%= category %></h2>
+<% works.top_ten.each do |work| %>
+  <p>
+    <%= work.title %> by <%= work.creator %><br>
+    <%= work.id %> votes
+<!--    TODO this is id for now!-->
+  </p>
+<% end %>
