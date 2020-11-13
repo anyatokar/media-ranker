@@ -24,22 +24,20 @@ CSV.open("db/works_seeds.csv", "w", :write_headers => true,
 end
 
 CSV.open("db/users_seeds.csv", "w", :write_headers => true,
-         :headers => ["name", "date_joined"]) do |csv|
+         :headers => ["name"]) do |csv|
   25.times do
     name = Faker::Name.name
-    date_joined = rand((Date.today - 100)..(Date.today - 50))
 
-    csv << [name, date_joined]
+    csv << [name]
   end
 end
 
-CSV.open("db/votes_seeds.csv", "w", :write_headers => true,
-         :headers => ["user_id", "work_id", "voted_on"]) do |csv|
-  40.times do
-    user_id = rand(1..25)
-    work_id = rand(1..25)
-    voted_on = rand((Date.today - 49)..(Date.today))
-
-    csv << [user_id, work_id, voted_on]
-  end
-end
+# CSV.open("db/votes_seeds.csv", "w", :write_headers => true,
+#          :headers => ["user_id", "work_id", "voted_on"]) do |csv|
+#   40.times do
+#     user_id = rand(1..25)
+#     work_id = rand(1..25)
+#
+#     csv << [user_id, work_id, voted_on]
+#   end
+# end

@@ -1,6 +1,6 @@
 <section class="top-ten__list-container">
   <h2 class="top-ten__header"> Top <%= category %></h2>
-  <% works.top_ten.each do |work| %>
+  <% Work.top_ten(category).each do |work| %>
     <li class="list-group-item">
       <h4>
         <%= work.title %>

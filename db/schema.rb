@@ -10,32 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_070902) do
+ActiveRecord::Schema.define(version: 2020_11_11_061245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "date_joined"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "work_id"
-    t.string "voted_on"
+    t.bigint "user_id"
+    t.bigint "work_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["work_id"], name: "index_votes_on_work_id"
   end
 
   create_table "works", force: :cascade do |t|
     t.string "category"
     t.string "title"
     t.string "creator"
-    t.date "publication_year"
-    t.text "description"
+    t.integer "publication_year"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -9,7 +9,7 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   work.category = row['category']
   work.title = row['title']
   work.creator = row['creator']
-  work.publication_year = Date.strptime(row['publication_year'], '%Y')
+  work.publication_year = row['publication_year'].to_i
   work.description = row['description']
   successful = work.save
   if !successful
@@ -32,8 +32,6 @@ user_failures = []
 CSV.foreach(USER_FILE, :headers => true) do |row|
   user = User.new
   user.name = row['name']
-  # user.date_joined = row['date_joined']
-  user.date_joined = Date.strptime(row['date_joined'], '%Y')
   successful = user.save
   if !successful
     user_failures << user
@@ -48,26 +46,26 @@ puts "#{user_failures.length} users failed to save"
 
 
 
-VOTE_FILE = Rails.root.join('db', 'votes_seeds.csv')
-puts "Loading raw vote data from #{VOTE_FILE}"
+# VOTE_FILE = Rails.root.join('db', 'votes_seeds.csv')
+# puts "Loading raw vote data from #{VOTE_FILE}"
+#
+# vote_failures = []
+# CSV.foreach(VOTE_FILE, :headers => true) do |row|
+#   vote = Vote.new
+#   vote.user_id = row['user_id']
+#   vote.work_id = row['work_id']
+#   vote.voted_on = Date.strptime(row['voted_on'], '%Y')
+#   successful = vote.save
+#   if !successful
+#     vote_failures << vote
+#     puts "Failed to save vote: #{vote.inspect}"
+#   else
+#     puts "Created vote: #{vote.inspect}"
+#   end
+# end
 
-vote_failures = []
-CSV.foreach(VOTE_FILE, :headers => true) do |row|
-  vote = Vote.new
-  vote.user_id = row['user_id']
-  vote.work_id = row['work_id']
-  vote.voted_on = Date.strptime(row['voted_on'], '%Y')
-  successful = vote.save
-  if !successful
-    vote_failures << vote
-    puts "Failed to save vote: #{vote.inspect}"
-  else
-    puts "Created vote: #{vote.inspect}"
-  end
-end
-
-puts "Added #{Vote.count} vote records"
-puts "#{vote_failures.length} votes failed to save"
+# puts "Added #{Vote.count} vote records"
+# puts "#{vote_failures.length} votes failed to save"
 
 
 # Since we set the primary key (the ID) manually on each of the

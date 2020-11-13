@@ -1,13 +1,13 @@
-<%# if @passenger.errors.any? %>
-<!--  <p class="errors">-->
-<!--    <i>Please adjust the following and try again!</i>-->
-<!--    <br>-->
-<%# @passenger.errors.each do |column, message| %>
-<!--      <strong>- <%#= column.capitalize %></strong> <%#= message %>-->
-<!--      <br>-->
-<%# end %>
-<!--  </p>-->
-<%# end %>
+<% if @book.errors.any? %>
+  <ul class="errors">
+    <% @book.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <section>
   <%= form_with model: @work, class: 'work-form' do |f| %>
     <div class ="form-group">
