@@ -12,10 +12,11 @@ describe Work do
     end
 
     it "must have a title" do
-      @work = Work.create(title: nil, description: "Test", publication_year: 1892, creator: "Test", category: "album")
-      @work.title = nil
-      result = @work.valid?
-      expect(result).must_equal false
+      # @work = Work.create(title: nil, description: "Test", publication_year: 1892, creator: "Test", category: "album")
+      work = works(:the_dude)
+      work.title = nil
+      result =
+      expect(work.valid?).must_equal false
     end
 
     it "must have a description" do
