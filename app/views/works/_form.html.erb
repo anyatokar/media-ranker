@@ -1,6 +1,6 @@
-<% if @book.errors.any? %>
+<% if @work.errors.any? %>
   <ul class="errors">
-    <% @book.errors.each do |column, message| %>
+    <% @work.errors.each do |column, message| %>
       <li>
         <strong><%= column.capitalize %></strong> <%= message %>
       </li>

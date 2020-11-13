@@ -4,61 +4,50 @@ describe Work do
   describe "validations" do
 
     it "works with valid data" do
-      # @work = Work.create(title: "Test", description: "Test", publication_year: 1892, creator: "Test", category: "album")
-      # @work.title = nil
       work = works(:the_dude)
-      # result = work.valid?
       expect(work.valid?).must_equal true
     end
 
     it "must have a title" do
-      # @work = Work.create(title: nil, description: "Test", publication_year: 1892, creator: "Test", category: "album")
       work = works(:the_dude)
       work.title = nil
-      result =
       expect(work.valid?).must_equal false
     end
 
     it "must have a description" do
-      @work = Work.create(title: "Test", description: nil, publication_year: 1892, creator: "Test", category: "album")
-      @work.description = nil
-      result = @work.valid?
-      expect(result).must_equal false
+      work = works(:the_dude)
+      work.description = nil
+      expect(work.valid?).must_equal false
     end
 
     it "must have a publication_year" do
-      @work = Work.create(title: "Test", description: "Test", publication_year: nil, creator: "Test", category: "album")
-      @work.publication_year = nil
-      result = @work.valid?
-      expect(result).must_equal false
+      work = works(:the_dude)
+      work.publication_year = nil
+      expect(work.valid?).must_equal false
     end
 
-    it "publication year must be nuremic" do
-      @work = Work.create(title: "Test", description: "Test", publication_year: "1892", creator: "Test", category: "album")
-      @work.publication_year = nil
-      result = @work.valid?
-      expect(result).must_equal false
+    it "publication year must be numeric" do
+      work = works(:the_dude)
+      work.publication_year = "Y1892"
+      expect(work.valid?).must_equal false
     end
 
     it "publication year must be positive" do
-      @work = Work.create(title: "Test", description: "Test", publication_year: -1, creator: "Test", category: "album")
-      @work.publication_year = nil
-      result = @work.valid?
-      expect(result).must_equal false
+      work = works(:the_dude)
+      work.publication_year = -1
+      expect(work.valid?).must_equal false
     end
 
     it "must have a creator" do
-      @work = Work.create(title: "Test", description: "Test", publication_year: 1892, creator: nil, category: "album")
-      @work.creator = nil
-      result = @work.valid?
-      expect(result).must_equal false
+      work = works(:the_dude)
+      work.creator = nil
+      expect(work.valid?).must_equal false
     end
 
     it "must have a category" do
-      @work = Work.create(title: "Test", description: "Test", publication_year: 1892, creator: nil, category: nil)
-      @work.category = nil
-      result = @work.valid?
-      expect(result).must_equal false
+      work = works(:the_dude)
+      work.category = nil
+      expect(work.valid?).must_equal false
     end
   end
 
