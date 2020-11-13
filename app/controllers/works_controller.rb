@@ -31,7 +31,6 @@ class WorksController < ApplicationController
       render :new # show the new book form view again
       return
     end
-
   end
 
   def edit

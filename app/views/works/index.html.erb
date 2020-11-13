@@ -1,8 +1,8 @@
 <h1>Works</h1>
 
-<%= render partial: "table", locals: { category: "Albums", works: @albums } %>
-<%= render partial: "table", locals: { category: "Books", works: @books } %>
-<%= render partial: "table", locals: { category: "Movies", works: @movies } %>
+<%= render partial: "table", locals: { category: "albums", works: @albums } %>
+<%= render partial: "table", locals: { category: "books", works: @books } %>
+<%= render partial: "table", locals: { category: "movies", works: @movies } %>
 
 <%= button_to "View top media", root_path, :class => "btn btn-secondary" %>
 <%= button_to "Add a new work", new_work_path, method: :get, :class => "btn btn-primary" %>

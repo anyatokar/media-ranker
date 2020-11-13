@@ -66,7 +66,7 @@ describe Work do
 
     end
 
-    it "if there are beween 0 and 10  works" do
+    it "if there is a tie" do
 
     end
 
@@ -77,8 +77,6 @@ describe Work do
 
   describe "top_ten" do
     it "if there are 10 works or more" do
-      # Work
-      # expect()
 
     end
 
