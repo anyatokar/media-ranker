@@ -25,4 +25,8 @@ class Work < ApplicationRecord
   def self.top_ten(category)
     self.filter_category(category).order(id: :desc).first(10)
   end
+
+  def self.spotlight
+    self.order(id: :desc).first
+  end
 end

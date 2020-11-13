@@ -9,20 +9,18 @@
 <!--</section>-->
 
 
-<!--<h2 class="spotlight__header">-->
-<!--  <span class="spotlight__header--prefix"-->
-<!--  Media Spotlight:-->
-<!--  ::after-->
-<!--</span>-->
-  <%#= @works.most_votes.title, :class => "spotlight__link-to" %>
-<!--</h2>-->
-<!--  <%#= @works.most_votes.title %> by <%#= @works.most_votes.creator %></h2>-->
-<!--<p class="spotlight__description"><%#= @works.most_votes.votes %>votes</p>-->
+<h2 class="spotlight__header">
+  <span class="spotlight__header--prefix">Media Spotlight</span>
+  <%= Work.spotlight.title %> by <%= Work.spotlight.creator %>
+</h2>
+<p class="spotlight__description">
+  <%= Work.spotlight.id %> votes - <%= Work.spotlight.description %>
+</p>
 
 <hr class="root__hr">
 <section class="top-ten__container">
-  <%= render partial: "top_ten", locals: { category: "movie", works: @movies } %>
-  <%= render partial: "top_ten", locals: { category: "book", works: @books } %>
-  <%= render partial: "top_ten", locals: { category: "album", works: @albums } %>
+  <%= render partial: "top_ten", locals: { category: "movie" } %>
+  <%= render partial: "top_ten", locals: { category: "book" } %>
+  <%= render partial: "top_ten", locals: { category: "album" } %>
 </section>
 
