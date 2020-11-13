@@ -1,30 +1,36 @@
 class UsersController < ApplicationController
   def index
+    @users = User.all
   end
 
   def show
+    @user = User.find_by(id: params[:id])
   end
 
-#   def new
-#     User.check_user(user_input)
-#   end
-#
-#   def create
-#     @work = Work.new(work_params) #instantiate a new work
-#     if @work.save # save returns true if the database insert succeeds
-#       redirect_to work_path(@work) # goes to work page
-#       return
-#     else # save failed
-#     render :new # show the new book form view again
-#     return
-#     end
-#
-#   end
-#
-#   def edit
-#   end
-# end
-#
-# def work_params
-#   return params.require(:work).permit(:title, :description, :publication_year, :creator, :category)
+  def login_form
+    @user = User.new
+  end
+
+  def login
+    name = params[:user][:name]
+    user = User.find_by(name: name)
+    if user
+      session[:user_id] = user.id
+      flash[:success] = "Successfully logged in as returning user #{name}"
+    else
+      user = User.create(name: name)
+      session[:user_id] = user.id
+      flash[:success] = "Successfully logged in as new user #{name}"
+    end
+
+    redirect_to root_path
+    return
+  end
+
+  def logout
+    session[:user_id] = nil
+    flash[:success] = "Successfully logged out"
+    redirect_to root_path
+    return
+  end
 end
