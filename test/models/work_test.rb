@@ -66,7 +66,7 @@ describe Work do
 
     end
 
-    it "if there are beween 0 and 10  works" do
+    it "if there are beween 0 and 10 works" do
 
     end
 
@@ -82,7 +82,7 @@ describe Work do
 
     end
 
-    it "if there are between 0 and 10  works" do
+    it "if there are between 0 and 10 works" do
 
     end
 
