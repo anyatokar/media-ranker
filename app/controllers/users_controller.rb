@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all
   end
@@ -24,16 +25,22 @@ class UsersController < ApplicationController
   def login
     name = params[:user][:name]
     user = User.find_by(name: name)
-    if user
+
+    if user.nil?
+      flash["alert alert-warning"] = "A problem occurred: Could not log in"
+      redirect_back(fallback_location: works_path)
+    elsif user
       session[:user_id] = user.id
       flash["alert alert-success"] = "Successfully logged in as existing user #{user.name}"
+      redirect_to root_path
     else
       user = User.create(name: name)
       session[:user_id] = user.id
-      flash["alert alert-success"] = "Successfully created new user #{user.name} with ID #{user.id}"
-    end
 
-    redirect_to root_path
+      flash["alert alert-success"] = "Successfully created new user #{user.name} with ID #{user.id}"
+
+      redirect_to root_path
+    end
     return
   end
 

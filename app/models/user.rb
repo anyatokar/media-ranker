@@ -17,7 +17,6 @@ class User < ApplicationRecord
   #     end
   #
 
-
   def self.vote_count(user)
     return user.votes.count
   end
