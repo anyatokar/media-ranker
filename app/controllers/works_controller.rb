@@ -28,6 +28,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work) # goes to work page
       return
     else # save failed
+      flash["alert alert-warning"] = "A problem occurred: Could not create work" # how would it know what category?
       render :new # show the new book form view again
       return
     end
