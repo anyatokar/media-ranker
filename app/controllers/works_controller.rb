@@ -29,7 +29,7 @@ class WorksController < ApplicationController
       return
     else # save failed
       flash["alert alert-warning"] = "A problem occurred: Could not create work" # how would it know what category?
-      render :new # show the new book form view again
+      render :new # show the new work form view again
       return
     end
   end
