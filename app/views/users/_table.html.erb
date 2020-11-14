@@ -1,27 +1,27 @@
 <section class="media-table">
   <h4><%= category.capitalize %></h4>
-  <% if works.length > 0 %>
+  <% if works.nil? || works.length.zero? %>
+    <p>No <%= category %> in the system.</p>
+
+  <% else %>
     <table class="table">
       <tr>
-        <th width="80">Votes</th>
-        <th>Title</th>
+        <th>Media Title</th>
         <th>Created By</th>
         <th width="100">Published</th>
-        <th width="100">Upvote</th>
+        <th width="100">Category</th>
+        <th width="80">Voted on</th>
       </tr>
 
       <% works.each do |work| %>
           <tr>
-  <!--          id for now-->
-            <td><%= work.id %></td>
             <td><%= link_to work.title, work_path(work) %></td>
             <td><%= work.creator %></td>
             <td><%= work.publication_year %></td>
-            <td><%= button_to "Upvote", upvote_path(work), method: :post, :class => "btn btn-primary" %></td>
+            <td><%= work.category %></td>
+            <td><%= button_to "Upvote", method: :post, :class => "btn btn-primary" %></td>
           </tr>
       <% end %>
     </table>
-  <% else %>
-    <p>No <%= category %> in the system.</p>
   <% end %>
 </section>

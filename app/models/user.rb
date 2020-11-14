@@ -16,7 +16,13 @@ class User < ApplicationRecord
   #       #
   #     end
   #
-  def date
-      return(self.created_at.strftime("%b %d, %Y"))
+
+
+  def self.vote_count(user)
+    return user.votes.count
+  end
+
+  def self.date_joined(user)
+      return(user.created_at.strftime("%b %d, %Y"))
   end
 end

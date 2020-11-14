@@ -1,0 +1,22 @@
+<h1>List of Users</h1>
+<section class="media-table">
+  <table class="table">
+    <tr>
+      <th>Username</th>
+      <th width="100">Votes</th>
+      <th width="150">Joined</th>
+    </tr>
+
+    <% if @users.nil? || @users.length.zero? %>
+      <p>No <%= category %> in the system.</p>
+    <% else %>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td><%= User.vote_count(user)%></td>
+        <td><%= User.date_joined(user) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+</section>
