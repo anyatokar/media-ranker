@@ -1,6 +1,6 @@
 <section class="media-table">
   <h4><%= category.capitalize %></h4>
-  <% if works.nil? || works.length.zero? %>
+  <% if @user.votes.nil? || @user.votes.length.zero? %>
     <p>No <%= category %> in the system.</p>
 
   <% else %>
@@ -8,18 +8,18 @@
       <tr>
         <th>Media Title</th>
         <th>Created By</th>
-        <th width="100">Published</th>
-        <th width="100">Category</th>
-        <th width="80">Voted on</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted on</th>
       </tr>
 
-      <% works.each do |work| %>
+      <% @user.votes.each do |vote| %>
           <tr>
-            <td><%= link_to work.title, work_path(work) %></td>
-            <td><%= work.creator %></td>
-            <td><%= work.publication_year %></td>
-            <td><%= work.category %></td>
-            <td><%= button_to "Upvote", method: :post, :class => "btn btn-primary" %></td>
+            <td><%= link_to vote.work.title, work_path(vote.work.id), method: :get %></td>
+            <td><%= vote.work.creator %></td>
+            <td><%= vote.work.publication_year %></td>
+            <td><%= vote.work.category.capitalize %></td>
+            <td><%= vote.created_at.strftime('%b %d, %Y')%></td>
           </tr>
       <% end %>
     </table>

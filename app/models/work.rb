@@ -32,4 +32,8 @@ class Work < ApplicationRecord
   def self.spotlight
     self.order(votes_count: :desc).first
   end
+
+  def self.vote_date(vote)
+    return(vote.created_at.strftime("%b %d, %Y"))
+  end
 end
