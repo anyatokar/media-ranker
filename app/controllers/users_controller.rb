@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def login
     name = params[:user][:name]
-    user = User.find_by(name: name)
+    @user = User.find_by(name: name)
     # if user.nil? # how can i use validation instead?
     #   flash["alert alert-warning"] = "A problem occurred: Could not log in"
     #   redirect_back(fallback_location: works_path)
@@ -34,15 +34,22 @@ class UsersController < ApplicationController
     #     return
     # end
 
-    if user.nil?
-      user = User.create(name: name)
-      session[:user_id] = user.id
-      flash["alert alert-success"] = "Successfully created new user #{user.name} with ID #{user.id}"
-      redirect_to root_path
+    if @user.nil?
+      @user = User.create(name: name)
+      if @user.valid?
+        session[:user_id] = @user.id
+        flash["alert alert-success"] = "Successfully created new user #{@user.name} with ID #{@user.id}"
+        redirect_to root_path
+      else
+        flash["alert alert-warning"] = "A problem occurred: Could not log in"
+        flash["alert alert-warning2"] = "• #{@user.errors.first[0]} #{@user.errors.first[1]}"
+
+        render :login_form
+      end
       return
     else
-      session[:user_id] = user.id
-      flash["alert alert-success"] = "Successfully logged in as existing user #{user.name}"
+      session[:user_id] = @user.id
+      flash["alert alert-success"] = "Successfully logged in as existing user #{@user.name}"
       redirect_to root_path
       return
     end

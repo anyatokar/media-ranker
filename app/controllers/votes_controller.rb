@@ -17,7 +17,18 @@ class VotesController < ApplicationController
         flash["alert alert-success"] = "Successfully upvoted!"
         redirect_back(fallback_location: works_path)
       else
-        flash["alert alert-danger"] = "An error occured."
+        flash["alert alert-warning"] = "A problem occured: Could not upvote."
+        flash["alert alert-warning2"] = "• #{@vote.errors.first[1]}"
+        # @vote.errors.each do |column, message|
+        #   flash["alert alert-warning2"] = "• #{message}"
+        # end
+
+        # flash["alert alert-warning2"] = @vote.errors.full_messages.to_sentence
+
+
+        # @vote.errors.each do |column, message|
+        #   puts message
+        # end
         redirect_back(fallback_location: works_path)
       end
     end

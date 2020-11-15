@@ -29,6 +29,22 @@ class WorksController < ApplicationController
       return
     else # save failed
       flash["alert alert-warning"] = "A problem occurred: Could not create work" # how would it know what category?
+    # flash["alert alert-warning2"] = @work.errors.first.full_message.to_sentenc
+    # flash["alert alert-warning2"] = @work.errors.first.class
+    # flash["alert alert-warning2"] = @work.errors.first do |column, message|
+    #   flash["alert alert-warning2"] = "• #{column} #{message}"
+    # end
+
+    flash["alert alert-warning2"] = "• #{@work.errors.first[0]} #{@work.errors.first[1]}"
+
+    # [:Title] and @work.error.first.value
+    #
+    #
+    # # @work.errors.first.key
+    # @work.errors.each do |column, message|
+    #   flash["alert alert-warning2"] = "• #{column} #{message}"
+    # end
+
       render :new # show the new work form view again
       return
     end
@@ -51,7 +67,9 @@ class WorksController < ApplicationController
       redirect_to work_path(@work) # goes to work page
       return
     else # save failed
-      render :edit # show the new book form view again
+    flash["alert alert-warning2"] = "• #{@work.errors.first[0]} #{@work.errors.first[1]}"
+
+    render :edit # show the new book form view again
       return
     end
   end
