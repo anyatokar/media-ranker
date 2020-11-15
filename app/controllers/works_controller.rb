@@ -38,6 +38,11 @@ class WorksController < ApplicationController
       return
     end
   end
+  #todo
+  # warning_message = "A problem occurred: Could not update #{@work.category}"
+  # flash_warning(warning_message, @work)
+  # title:has already been taken
+
 
   def edit
     @work = Work.find_by(id: params[:id])

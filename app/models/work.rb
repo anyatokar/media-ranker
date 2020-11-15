@@ -3,6 +3,7 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
   validates :title, presence: { message: "• title: can't be blank" }
+  # uniqueness: { scope: :user_id, message: "• user: has already voted for this work" }
 
   # validates :title, :description, :publication_year, :creator, :category, presence: true
   # validates :publication_year, numericality: { only_integer: true, greater_than: 0 }
