@@ -2033,7 +2033,7 @@ fieldset:disabled a.btn {
 .btn-primary {
   color:#fff;
   background-color:#007bff;
-  border-color:#007bff
+  border-color:#007bff;
 }
 .btn-primary:hover {
   color:#fff;
@@ -2798,11 +2798,17 @@ input[type="button"].btn-block {
   padding:0.25rem 1.5rem;
   color:#212529
 }
-.btn-group,
+
+//anya added
+.btn-group {
+  gap: 3px;
+}
+// end of anya added
+
 .btn-group-vertical {
   position:relative;
   display:inline-flex;
-  vertical-align:middle
+  vertical-align:middle;
 }
 .btn-group>.btn,
 .btn-group-vertical>.btn {
