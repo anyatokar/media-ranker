@@ -18,7 +18,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   def perform_login(user = nil)
-    user ||= User.first
+    # user ||= User.first
+    # user ||= users(:user1)
+    user ||= User.new(name: "login_name")
 
     login_data = {
       user: {

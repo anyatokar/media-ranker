@@ -1,19 +1,19 @@
 vote1:
-  user_id: user1.id
-  work_id: work1.id
+  user: user1
+  work: the_dude
 
 vote2:
-  user_id: user1.id
-  work_id: work2.id
+  user: user1
+  work: moonrise
 
 vote3:
-  user_id: user1.id
-  work_id: work3.id
+  user: user1
+  work: work3
 
 vote4:
-  user_id: user4.id
-  work_id: work1.id
+  user: user4
+  work: work1
 
 vote5:
-  user_id: user5.id
-  work_id: work5.id
+  user: user5
+  work: work5

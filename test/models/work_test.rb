@@ -1,3 +1,8 @@
+# 17. Work model has tests with sections on validations (valid and invalid) and relationships (has votes)
+
+# 18. Work model has tests with a section on all business logic methods in
+# the model, including their edge cases
+
 require "test_helper"
 
 describe Work do
@@ -71,14 +76,12 @@ describe Work do
 
 
   describe "spotlight" do
-    it "if there are 10 works or more" do
-      expect(works.top_ten.count).must_equal 11
-
-
-
+    it "can select work " do
+      expect(Work.spotlight.title).must_equal "Big Lebowski"
     end
 
     it "if there is a tie" do
+
 
     end
 
@@ -89,6 +92,9 @@ describe Work do
 
   describe "top_ten" do
     it "if there are 10 works or more" do
+      # array =  works.map { |work| work }
+      # p works
+      # Works.top_ten(work)
 
     end
 

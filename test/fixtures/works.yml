@@ -20,14 +20,14 @@ work3:
   description: work3 desc
 
 work4:
-  category: album
+  category: book
   title: work4 title
   creator: work4 creator
   publication_year: 4
   description: work4 desc
 
 work5:
-  category: album
+  category: book
   title: work5 title
   creator: work5 creator
   publication_year: 5

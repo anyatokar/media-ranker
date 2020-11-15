@@ -3,6 +3,14 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
   validates :title, presence: { message: "• title: can't be blank" }
+  validates :title, uniqueness: { message: "• title: has already been taken" }
+
+
+  # validates :user, uniqueness: { scope: :work, message: "You can only vote for this work once"
+  # validates :title, presence: true, uniqueness: { scope: :category }
+  # validates :category, inclusion: { in: %w(book movie album) }
+
+
   # uniqueness: { scope: :user_id, message: "• user: has already voted for this work" }
 
   # validates :title, :description, :publication_year, :creator, :category, presence: true
