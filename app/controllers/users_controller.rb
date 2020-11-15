@@ -24,40 +24,32 @@ class UsersController < ApplicationController
   def login
     name = params[:user][:name]
     @user = User.find_by(name: name)
-    # if user.nil? # how can i use validation instead?
-    #   flash["alert alert-warning"] = "A problem occurred: Could not log in"
-    #   redirect_back(fallback_location: works_path)
-    #   return
-    # if user.nil?
-    #     flash["alert alert-warning"] = "A problem occurred: Could not log in"
-    #     redirect_back(fallback_location: works_path)
-    #     return
-    # end
-
     if @user.nil?
       @user = User.create(name: name)
       if @user.valid?
         session[:user_id] = @user.id
-        flash["alert alert-success"] = "Successfully created new user #{@user.name} with ID #{@user.id}"
+        success_message = "Successfully created new user #{@user.name} with ID #{@user.id}"
+        flash_success(success_message)
         redirect_to root_path
       else
-        flash["alert alert-warning"] = "A problem occurred: Could not log in"
-        flash["alert alert-warning2"] = "• #{@user.errors.first[0]} #{@user.errors.first[1]}"
+        warning_message = "A problem occurred: Could not log in"
+        flash_warning(warning_message, @user)
 
         render :login_form
       end
       return
     else
       session[:user_id] = @user.id
-      flash["alert alert-success"] = "Successfully logged in as existing user #{@user.name}"
+      success_message = "Successfully logged in as existing user #{@user.name} with ID #{@user.id}"
+      flash_success(success_message)
       redirect_to root_path
       return
     end
   end
 
   def logout
-    user = User.where(id: session[:user_id])
-    flash["alert alert-success"] = "Successfully logged out"
+    # user = User.where(id: session[:user_id])
+    flash_success("Successfully logged out")
     session[:user_id] = nil
     redirect_to login_path
     return

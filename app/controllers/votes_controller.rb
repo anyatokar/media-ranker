@@ -9,26 +9,18 @@ class VotesController < ApplicationController
     work = Work.find_by(id: params[:work_id])
     user = User.find_by(id: session[:user_id])
     if user.nil?
-      flash["alert alert-warning"] = "A problem occurred: Please login to vote"
+      flash["alert alert-warning"] = "A problem occurred: You must log in to do that"
       redirect_back(fallback_location: works_path)
     else
       @vote = Vote.new(work_id: work.id, user_id: user.id)
+
       if @vote.save
-        flash["alert alert-success"] = "Successfully upvoted!"
+        success_message = "Successfully upvoted!"
+        flash_success(success_message)
         redirect_back(fallback_location: works_path)
       else
-        flash["alert alert-warning"] = "A problem occured: Could not upvote."
-        flash["alert alert-warning2"] = "• #{@vote.errors.first[1]}"
-        # @vote.errors.each do |column, message|
-        #   flash["alert alert-warning2"] = "• #{message}"
-        # end
-
-        # flash["alert alert-warning2"] = @vote.errors.full_messages.to_sentence
-
-
-        # @vote.errors.each do |column, message|
-        #   puts message
-        # end
+        warning_message = "A problem occurred: Could not upvote"
+        flash_warning(warning_message, @vote)
         redirect_back(fallback_location: works_path)
       end
     end

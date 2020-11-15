@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :works, through: :votes
 
-  validates :name, presence: true
+  validates :name, presence: { message: "• title: can't be blank" }
 
   # def self.check_user(user_input)
   #   user = User.where(name: user_input)

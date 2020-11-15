@@ -2,8 +2,10 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
-  validates :title, :description, :publication_year, :creator, :category, presence: true
-  validates :publication_year, numericality: { only_integer: true, greater_than: 0 }
+  validates :title, presence: { message: "• title: can't be blank" }
+
+  # validates :title, :description, :publication_year, :creator, :category, presence: true
+  # validates :publication_year, numericality: { only_integer: true, greater_than: 0 }
 
   # scope :votes_descending, ->{ order("votes_count DESC")}
 
