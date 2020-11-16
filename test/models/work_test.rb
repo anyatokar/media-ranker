@@ -1,8 +1,3 @@
-# 17. Work model has tests with sections on validations (valid and invalid) and relationships (has votes)
-
-# 18. Work model has tests with a section on all business logic methods in
-# the model, including their edge cases
-
 require "test_helper"
 
 describe Work do
@@ -90,51 +85,57 @@ describe Work do
   describe "filter methods do" do
     it "filters by category" do
       expect(Work.filter_category("movie").length).must_equal 3
-      expect(Work.filter_category("book").length).must_equal 8
+      expect(Work.filter_category("book").length).must_equal 11
       expect(Work.filter_category("album").length).must_equal 0
     end
-
   end
 
   describe "spotlight" do
     it "can select work" do
-      # Work.reload
-      # works.reload
-      # work = works(:work3)
-      # p work.votes.count
-      # p Work.spotlight.votes.count
       expect(Work.spotlight.title).must_equal "work3 title"
-
     end
 
     it "if there is a tie" do
+      user = users(:user10)
+      work = works(:work4)
 
+      vote9 = Vote.create(user: user, work: work)
+      expect(vote9.valid?).must_equal true
+      expect(works(:work4).votes.count).must_equal 3
 
+      expect(work.votes.count).must_equal works(:work3).votes.count
+      expect(Work.spotlight.title).must_equal "work3 title"
     end
 
     it "if there are 0 works" do
-
+      Work.destroy_all
+      expect(Work.spotlight).must_be_nil
     end
   end
 
   describe "top_ten" do
     it "if there are 10 works or more" do
-      expect(Work.top_ten(works).length).must_equal 10
+      books = Work.books
+      expect(books.count).must_equal 11
+      top_ten_book = Work.top_ten("book")
+
+      expect(top_ten_book.length).must_equal 10
     end
 
     it "if there are between 0 and 10 works" do
+      movies = Work.movies
+      expect(movies.count).must_equal 3
+      top_ten_movie = Work.top_ten("movie")
 
-
-      movies = works.select { |work| work.category == "movie" }
-      books = works.select { |work| work.category == "book" }
-
-      expect(Work.top_ten(movies).length).must_equal 3
-      expect(Work.top_ten(books).length).must_equal 8
+      expect(top_ten_movie.length).must_equal 3
     end
 
     it "if there are 0 works" do
-      albums = works.select { |work| work.category == "album" }
-      expect(Work.top_ten(albums).length).must_equal 0
+      albums = Work.albums
+      expect(albums.count).must_equal 0
+      top_ten_album = Work.top_ten("album")
+
+      expect(top_ten_album.length).must_equal 0
     end
   end
 end

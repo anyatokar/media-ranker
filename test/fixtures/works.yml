@@ -28,7 +28,7 @@ work4:
   creator: work4 creator
   publication_year: 4
   description: work4 desc
-  votes_count: 0
+  votes_count: 2
 
 work5:
   category: book
@@ -79,6 +79,30 @@ work10:
   votes_count: 0
 
 work11:
+  category: book
+  title: work11 title
+  creator: work11 creator
+  publication_year: 11
+  description: work11 desc
+  votes_count: 0
+
+work12:
+  category: book
+  title: work11 title
+  creator: work11 creator
+  publication_year: 11
+  description: work11 desc
+  votes_count: 0
+
+work13:
+  category: book
+  title: work11 title
+  creator: work11 creator
+  publication_year: 11
+  description: work11 desc
+  votes_count: 0
+
+work14:
   category: book
   title: work11 title
   creator: work11 creator

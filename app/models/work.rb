@@ -2,8 +2,7 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
-  validates :title, presence: { message: "• title: can't be blank" }
-  validates :title, uniqueness: { message: "• title: has already been taken" }
+  validates :title, presence: { message: "• title: can't be blank" }, uniqueness: { scope: :category, message: "• title: has already been taken" }
 
 
   # validates :user, uniqueness: { scope: :work, message: "You can only vote for this work once"
@@ -27,19 +26,26 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten(category)
-    self.filter_category(category).order(votes_count: :desc).first(10)
-
+    if self.nil?
+      return nil
+    else
+      return self.filter_category(category).order(votes_count: :desc).first(10)
+    end
   end
 
   def self.spotlight
-    unless self.nil?
-      self.order(votes_count: :desc).first
+    if self.nil?
+      return nil
+    else
+      return self.order(votes_count: :desc).first
     end
   end
 
   def self.vote_date(vote)
-    unless self.nil?
-      return(vote.created_at.strftime("%b %d, %Y"))
+    if self.nil?
+      return nil
+    else
+      return (vote.created_at.strftime("%b %d, %Y"))
     end
   end
 end
