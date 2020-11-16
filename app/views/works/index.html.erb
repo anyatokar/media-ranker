@@ -4,6 +4,6 @@
 <%= render partial: "table", locals: { category: "books", works: @books } %>
 <%= render partial: "table", locals: { category: "movies", works: @movies } %>
 <section class="btn-group">
-<%= button_to "View top media", root_path, method: :get, class: "btn btn-secondary" %>
-<%= button_to "Add a new work", new_work_path, method: :get, :class => "btn btn-primary" %>
+  <%= button_to "View top media", root_path, method: :get, class: "btn btn-secondary" %>
+  <%= button_to "Add a new work", new_work_path, method: :get, :class => "btn btn-primary" %>
 </section>

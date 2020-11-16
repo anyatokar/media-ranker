@@ -12,7 +12,6 @@
 
       <% works.each do |work| %>
           <tr>
-  <!--          id for now-->
             <td><%= work.votes_count %></td>
             <td><%= link_to work.title, work_path(work) %></td>
             <td><%= work.creator %></td>
