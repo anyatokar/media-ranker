@@ -10,15 +10,6 @@ class Work < ApplicationRecord
   # validates :title, presence: true, uniqueness: { scope: :category }
   # validates :category, inclusion: { in: %w(book movie album) }
 
-
-  # uniqueness: { scope: :user_id, message: "• user: has already voted for this work" }
-
-  # validates :title, :description, :publication_year, :creator, :category, presence: true
-  # validates :publication_year, numericality: { only_integer: true, greater_than: 0 }
-
-  # scope :votes_descending, ->{ order("votes_count DESC")}
-
-
   def self.filter_category(category)
     Work.where(category: category)
   end
@@ -41,10 +32,14 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    self.order(votes_count: :desc).first
+    unless self.nil?
+      self.order(votes_count: :desc).first
+    end
   end
 
   def self.vote_date(vote)
-    return(vote.created_at.strftime("%b %d, %Y"))
+    unless self.nil?
+      return(vote.created_at.strftime("%b %d, %Y"))
+    end
   end
 end

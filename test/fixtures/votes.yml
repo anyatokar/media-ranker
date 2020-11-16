@@ -12,8 +12,12 @@ vote3:
 
 vote4:
   user: user4
-  work: work1
+  work: work3
 
 vote5:
   user: user5
   work: work5
+
+vote6:
+  user: user6
+  work: work3

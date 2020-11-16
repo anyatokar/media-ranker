@@ -2,7 +2,7 @@ require "test_helper"
 
 describe UsersController do
   it "must get index" do
-    get users_index_url
+    get "/login"
     must_respond_with :success
   end
 
@@ -21,16 +21,16 @@ describe UsersController do
     must_respond_with :success
   end
 
-  # describe "testing session" do
-  #   it "returns 200 OK for a logged-in user" do
-  #     # Arrange
-  #     perform_login
-  #
-  #     # Act
-  #     get current_user_path
-  #
-  #     # Assert
-  #     must_respond_with :success
-  #   end
-  # end
+  describe "testing session" do
+    it "returns 200 OK for a logged-in user" do
+      # Arrange
+      # post "/login" (name: "unique_username")
+
+      # Act
+      get "/users/current"
+
+      # Assert
+      must_respond_with :success
+    end
+  end
 end
