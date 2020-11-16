@@ -1,6 +1,6 @@
-# require "test_helper"
+require "test_helper"
 #
-# describe WorksController do
+describe WorksController do
 #   it "must get index" do
 #     get works_index_url
 #     must_respond_with :success
@@ -21,4 +21,4 @@
 #     must_respond_with :success
 #   end
 #
-# end
+end

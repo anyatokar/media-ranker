@@ -1,6 +1,6 @@
-# require "test_helper"
-#
-# describe UsersController do
+require "test_helper"
+
+describe UsersController do
 #   it "must get index" do
 #     get "/login"
 #     must_respond_with :success
@@ -33,4 +33,4 @@
 #       must_respond_with :success
 #     end
 #   end
-# end
+end

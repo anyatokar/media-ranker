@@ -1,6 +1,6 @@
-# require "test_helper"
-#
-# describe VotesController do
+require "test_helper"
+
+describe VotesController do
 #   it "must get index" do
 #     get votes_index_url
 #     must_respond_with :success
@@ -20,5 +20,5 @@
 #     get votes_edit_url
 #     must_respond_with :success
 #   end
-#
-# end
+
+end
