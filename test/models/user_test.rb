@@ -20,15 +20,6 @@ describe User do
       expect(user.valid?).must_equal false
       expect(user.errors.messages).must_include :name
     end
-
-    it "name must be unique" do
-      user1 = users(:user1)
-      user2 = users(:user2)
-
-      user1.name = user2.name
-      expect(user1.valid?).must_equal false
-      expect(user1.errors.messages).must_include :name
-    end
   end
 
   describe "relations" do
