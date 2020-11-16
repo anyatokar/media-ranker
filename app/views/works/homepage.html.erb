@@ -18,10 +18,10 @@
       <%= Work.spotlight.votes_count %> votes - <%= Work.spotlight.description %>
     </p>
   </section>
-<%else %>
+<% else %>
   <h2 class="spotlight__header">
-    <span class="spotlight__header--prefix">Media Spotlight</span>
-    <p>top work not available</p>
+    <span class="spotlight__header--prefix">Media Spotlight</span></h2>
+    <p>Top work not available</p>
 <% end %>
 
 <hr class="root__hr">
@@ -30,4 +30,3 @@
   <%= render partial: "top_ten", locals: { category: "book" } %>
   <%= render partial: "top_ten", locals: { category: "album" } %>
 </section>
-
