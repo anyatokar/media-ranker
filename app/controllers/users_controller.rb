@@ -48,7 +48,6 @@ class UsersController < ApplicationController
   end
 
   def logout
-    # user = User.where(id: session[:user_id])
     flash_success("Successfully logged out")
     session[:user_id] = nil
     redirect_to login_path

@@ -1,13 +1,5 @@
 class WorksController < ApplicationController
-  def homepage
-    @works = Work.all
-    @albums = Work.albums
-    @books = Work.books
-    @movies = Work.movies
-  end
-
   def index
-
     @albums = Work.albums
     @books = Work.books
     @movies = Work.movies
@@ -38,11 +30,6 @@ class WorksController < ApplicationController
       return
     end
   end
-  #todo
-  # warning_message = "A problem occurred: Could not update #{@work.category}"
-  # flash_warning(warning_message, @work)
-  # title:has already been taken
-
 
   def edit
     @work = Work.find_by(id: params[:id])

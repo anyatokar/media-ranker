@@ -1,9 +1,4 @@
 class VotesController < ApplicationController
-  def index
-  end
-
-  def show
-  end
 
   def upvote
     work = Work.find_by(id: params[:work_id])
@@ -24,43 +19,5 @@ class VotesController < ApplicationController
         redirect_back(fallback_location: works_path)
       end
     end
-  end
-
-  # def new
-  #   @vote = Vote.new
-  # end
-
-  # def create
-  #   @vote = Vote.new
-  #
-  #
-  #
-  #     Driver.find_by(available: "true")
-  #   @trip = Trip.new(
-  #     passenger_id: params[:passenger_id],
-  #     driver_id: driver_to_assign.id,
-  #     date: Date.today,
-  #     cost: rand(1..5000), # set cost to random number
-  #     rating: nil # set rating to nil
-  #   )
-  #   if @trip.save
-  #     driver_to_assign.update(available: "false")
-  #     redirect_to trip_path(@trip.id)
-  #   else
-  #     render :new #TODO: alert user somehow
-  #     return
-  #   end
-  #
-  # def create
-  #   @vote = Vote.new
-  #   # if @vote.save
-  #   #   return
-  #   # else
-  #   # render :new
-  #   # return
-  #   end
-  # end
-
-  def edit
   end
 end
