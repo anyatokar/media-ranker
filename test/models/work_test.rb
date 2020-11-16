@@ -82,11 +82,25 @@ describe Work do
     end
   end
 
-  describe "filter methods do" do
+  describe "filter method" do
     it "filters by category" do
       expect(Work.filter_category("movie").length).must_equal 3
       expect(Work.filter_category("book").length).must_equal 11
       expect(Work.filter_category("album").length).must_equal 0
+    end
+  end
+
+  describe "category methods" do
+    it "selects movies" do
+      expect(Work.movies.length).must_equal 3
+    end
+
+    it "selects books" do
+      expect(Work.books.length).must_equal 11
+    end
+
+    it "selects albums" do
+      expect(Work.albums.length).must_equal 0
     end
   end
 
@@ -136,6 +150,13 @@ describe Work do
       top_ten_album = Work.top_ten("album")
 
       expect(top_ten_album.length).must_equal 0
+    end
+  end
+
+  describe "vote date with conversion" do
+    it "returns date_voted on for existing work" do
+      vote = votes(:vote1)
+      expect(Work.vote_date(vote)).must_equal "Nov 12, 2020"
     end
   end
 end

@@ -4,11 +4,6 @@ class Work < ApplicationRecord
 
   validates :title, presence: { message: "• title: can't be blank" }, uniqueness: { scope: :category, message: "• title: has already been taken" }
 
-
-  # validates :user, uniqueness: { scope: :work, message: "You can only vote for this work once"
-  # validates :title, presence: true, uniqueness: { scope: :category }
-  # validates :category, inclusion: { in: %w(book movie album) }
-
   def self.filter_category(category)
     Work.where(category: category)
   end

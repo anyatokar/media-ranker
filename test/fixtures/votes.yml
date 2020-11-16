@@ -1,6 +1,7 @@
 vote1:
   user: user1
   work: the_dude
+  created_at: Thu, 12 Nov 2020 22:36:22 UTC +00:00
 
 vote2:
   user: user1
